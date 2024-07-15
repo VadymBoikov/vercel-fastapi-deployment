@@ -139,4 +139,4 @@ def handle_checkout_session(session):
 if __name__ == '__main__':
     import uvicorn
     # Запуск FastAPI додатку з uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 5001)))
+    uvicorn.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
