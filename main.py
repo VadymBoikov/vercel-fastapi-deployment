@@ -42,9 +42,11 @@ async def lifespan(app: FastAPI):
     """
     webhook_info = await application.bot.getWebhookInfo()
     webhook_url = os.path.join(endpoint_url, "telegram-webhook")
-    
+    logger.info('webhook url is: %s', webhook_url)
+
     if webhook_info.url != webhook_url:
         await application.bot.setWebhook(webhook_url, max_connections=30)
+        logger.info('webhook url was set')
     async with application:
         await application.start()
         yield
