@@ -98,6 +98,30 @@ async def telegram_webhook(request: Request):
     await application.process_update(update)
     return Response(content="OK", status_code=200)
 
+html = f"""
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FastAPI on Vercel</title>
+        <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+    </head>
+    <body>
+        <div class="bg-gray-200 p-4 rounded-lg shadow-lg">
+            <h1>Hello from FastAPI</h1>
+            <ul>
+                <li><a href="/docs">/docs</a></li>
+                <li><a href="/redoc">/redoc</a></li>
+            </ul>
+            <p>Powered by <a href="https://vercel.com" target="_blank">Vercel</a></p>
+        </div>
+    </body>
+</html>
+"""
+
+@app.get("/")
+async def root():
+    return HTMLResponse(html)
+
 def update_supabase(payment_session, customer_id: str, customer_username: str, discount_percent: str, email: str):
     """
     Оновлює базу даних Supabase інформацією про оплату.
@@ -139,4 +163,4 @@ def handle_checkout_session(session):
 if __name__ == '__main__':
     import uvicorn
     # Запуск FastAPI додатку з uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    uvicorn.run(app, host='0.0.0.0', port=int(os.environ.get('PORT', 3000)))
