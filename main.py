@@ -11,6 +11,7 @@ import stripe
 import dotenv
 dotenv.load_dotenv('.env')
 
+
 # Ініціалізація FastAPI додатку
 app = FastAPI()
 
