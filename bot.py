@@ -11,6 +11,7 @@ import dotenv
 dotenv.load_dotenv('.env')
 
 
+
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
